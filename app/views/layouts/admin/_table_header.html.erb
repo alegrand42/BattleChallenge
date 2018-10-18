@@ -1,0 +1,7 @@
+<div class="box-header with-border">
+<%- if controller.action_name == 'index' %>
+    <h3 class="box-title">  <%= controller_name.humanize %></h3>
+<%- else %>
+    <h3 class="box-title">  <%= controller_name.singularize.humanize%></h3>
+<%- end %>
+</div>

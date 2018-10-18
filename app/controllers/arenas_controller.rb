@@ -1,2 +1,6 @@
-class ArenasController < ApplicationController
+class ArenasController < AdminsController
+
+    def index
+    end
+
 end

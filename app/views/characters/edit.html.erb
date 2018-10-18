@@ -1,0 +1,16 @@
+<div class="box box-info">
+  <%= render 'layouts/admin/table_header' %>
+  <%= form_for @character, url: character_path(@character) do |f| %>
+
+    <% if @character.errors.any? %>
+      <div class="alert form-errors form-group">
+        <button type="button" class="close" name="button" data-dismiss="alert" aria-hideen="true"> ×</button>
+        <% @character.errors.full_messages.each do |msg| %>
+          <li> <%= msg %> </li>
+        <% end %>
+      </div>
+    <% end %>
+    <%= render 'fields', f: f, character: @character, fields_disabled: false, type_hidden: "" %>
+
+  <% end %>
+</div>
