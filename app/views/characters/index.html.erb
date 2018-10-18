@@ -1,0 +1,38 @@
+
+<div class="row p-15">
+  <%= search_form %>
+  <%= link_to  new_character_path, class: 'btn  btn-success pull-right' do %>
+    New <i class="fa fa-plus"></i>
+  <%- end %>
+</div>
+
+<div class="box box-info">
+  <div class="box">
+    <%= render 'layouts/admin/table_header' %>
+    <%= collection_table_for @characters, [:id, :name, :actions] do |row, character| %>
+      <%- row.column(:id) { (character.id.to_s) } %>
+      <%- row.column(:name) { (character.name) } %>
+      <%- row.column(:actions) do %>
+        <div class="btn-group btn-group-sm">
+          <%= link_to character_path(character), class: 'btn btn-sm btn-icon btn-default' do %>
+            <i class="fa fa-eye"></i>
+          <%- end %>
+        </div>
+        <div class="btn-group btn-group-sm">
+          <%= link_to  edit_character_path(character), class: 'btn btn-sm btn-icon btn-default  btn-default' do %>
+            <i class="fa fa-pencil"></i>
+          <%- end %>
+        </div>
+
+        <div class="btn-group btn-group-sm">
+          <%= link_to  character_path(character), method: :delete, class: 'btn btn-sm btn-icon btn-danger tooltips', 'data-confirm' => 'Sure ?', 'data-placement' => 'bottom' do %>
+            <i class='fa fa-trash-o'></i>
+          <%- end %>
+        </div>
+      <%- end %>
+    <% end %>
+    <div class="pull-right">
+      <!--%= paginate @boxes, theme: 'twitter-bootstrap-3' %-->
+    </div>
+  </div>
+</div>
