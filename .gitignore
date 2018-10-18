@@ -23,3 +23,16 @@ application.yml
 
 # swp
 *.swp
+
+### Rails ###
+*.rbc
+capybara-*.html
+.rspec
+/log
+/tmp
+/public/system
+/coverage/
+/spec/tmp/*
+*.orig
+rerun.txt
+pickle-email-*.html
