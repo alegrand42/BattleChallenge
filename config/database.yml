@@ -23,7 +23,9 @@ default: &default
 
 development:
   <<: *default
-  database: BattleChallenge_development
+  database: <%= ENV['DB_NAME']%>
+  username: <%= ENV['DB_POSTGRES_USERNAME'] %>
+  password: <%= ENV['DB_POSTGRES_PASSWORD'] %>
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.
