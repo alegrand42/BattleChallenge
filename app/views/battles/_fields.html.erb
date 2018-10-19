@@ -3,14 +3,14 @@
   <div class="form-group col-xs-12">
     <%= f.label :player_one, class:"col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:player_one_id, @characters, :id, :name, {:include_blank => 'Select the first player'}, class:"form-control select2 full-width") %>
+      <%= f.collection_select(:player_one_id, @characters, :id, :name, {:include_blank => 'Select the first player'}, class:"form-control select2 full-width", disabled: fields_disabled) %>
     </div>
   </div>
 
   <div class="form-group col-xs-12">
     <%= f.label :player_two, class:"col-sm-2 control-label" %>
     <div class="col-sm-10">
-      <%= f.collection_select(:player_two_id, @characters, :id, :name, {:include_blank => 'Select the second player'}, class:"form-control select2 full-width") %>
+      <%= f.collection_select(:player_two_id, @characters, :id, :name, {:include_blank => 'Select the second player'}, class:"form-control select2 full-width", disabled: fields_disabled) %>
     </div>
   </div>
 
