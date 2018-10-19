@@ -5,8 +5,11 @@ class ArenasController < AdminsController
     def index
         init_arena
 
-        # on battle creation render arenas with param id if @battle 
-        @battle = @battles.last
+        if params['battle_id']
+            @battle = @battles.find(params['battle_id'])
+        else
+            @battle = @battles.last
+        end
         if @battle
             @battle_state = check_battle_state(@battle)
             if @battle_state == 'start'
@@ -34,4 +37,5 @@ class ArenasController < AdminsController
             @battle_state = 'start'
         end
     end
+
 end

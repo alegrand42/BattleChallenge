@@ -2,8 +2,10 @@
     <% if @battle_state == 'home'%>
         <%= render "home" %>
     <% elsif @battle_state == 'start' %>
+        <%= render "home" %>
         <%= render "battle" %>
     <% else%>
+        <%= render "home" %>
         <%= render "result" %>
     <% end %>
 </section>

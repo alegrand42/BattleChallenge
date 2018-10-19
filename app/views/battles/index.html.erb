@@ -9,9 +9,19 @@
 <div class="box box-info">
   <div class="box">
     <%= render 'layouts/admin/table_header' %>
-    <%= collection_table_for @battles, [:id, :historic, :actions] do |row, battle| %>
+    <%= collection_table_for @battles, [:id, :battle, :actions] do |row, battle| %>
       <%- row.column(:id) { (battle.id.to_s) } %>
-      <%- row.column(:historic) { (battle.historic) } %>
+      <%- row.column(:battle) do %>
+          <% if battle.winner_id%>
+            Winner: <%= Character.find(battle.winner_id).name %>
+        <% else %>
+            <div class="btn-group btn-group-sm">
+                <%= link_to arenas_path(battle_id: battle.id), :controller => "searches", :query => "ruby on rails", class: 'btn btn-sm btn-icon btn-default' do %>
+                    Fight
+                <%- end %>
+            </div>
+          <% end %>
+      <%- end%>
       <%- row.column(:actions) do %>
         <div class="btn-group btn-group-sm">
           <%= link_to battle_path(battle), class: 'btn btn-sm btn-icon btn-default' do %>
