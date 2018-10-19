@@ -29,12 +29,6 @@
           <%- end %>
         </div>
         <div class="btn-group btn-group-sm">
-          <%= link_to  edit_battle_path(battle), class: 'btn btn-sm btn-icon btn-default  btn-default' do %>
-            <i class="fa fa-pencil"></i>
-          <%- end %>
-        </div>
-
-        <div class="btn-group btn-group-sm">
           <%= link_to  battle_path(battle), method: :delete, class: 'btn btn-sm btn-icon btn-danger tooltips', 'data-confirm' => 'Sure ?', 'data-placement' => 'bottom' do %>
             <i class='fa fa-trash-o'></i>
           <%- end %>
