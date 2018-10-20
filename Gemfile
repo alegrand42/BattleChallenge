@@ -36,6 +36,13 @@ gem 'jbuilder', '~> 2.5'
 # ENV variables
 gem 'figaro'
 
+# Use jquery as the JavaScript library
+gem 'jquery-rails'
+gem 'jquery-ui-rails'
+
+# Forms
+gem "select2-rails"
+
 # Bootstrap
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
