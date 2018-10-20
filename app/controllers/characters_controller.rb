@@ -9,6 +9,10 @@ class CharactersController < AdminsController
                                           :attack,
                                           :armor,
                                           :weapon_ids,
+                                          :level,
+                                          :exp,
+                                          :win_count,
+                                          :lose_count,
                                           :background)
     end
 

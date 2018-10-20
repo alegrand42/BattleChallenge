@@ -20,7 +20,9 @@ module GameProcess
         def set_result(player)
             @result = {
                 'winner_id' => player.id,
-                'historic' => @result
+                'historic' => @result,
+                'xp' => @exp,
+                'level_up' => @level_up
             }
         end
 
@@ -32,6 +34,7 @@ module GameProcess
                     @hp1 = attack(@player_2, @hp1, @player_1)
                 end
             end while @hp1 > 0 && @hp2 > 0
+            @hp1 > 0 ? set_exp(@player_2, @turn, @player_1) : set_exp(@player_1, @turn, @player_2)
             @hp1 > 0 ? set_result(@player_1) : set_result(@player_2)
         end
 
@@ -59,6 +62,13 @@ module GameProcess
             "#{attacker.name} misses his target."
         end
 
+        def set_exp(loser, turn, winner)
+            (10 - turn) > 0 ? xp = 10 - turn : xp = 0
+            @exp = xp + 2 * loser.level
+            xp_count = winner.exp - winner.level * 100.0 + @exp
+            @level_up = true if  xp_count > 100.0
+        end
+
         def receive_damage(hp, amount)
             hp - amount < 0 ? hp = 0 : hp = hp - amount
         end
@@ -76,6 +86,8 @@ module GameProcess
             @hp2 = @player_2.hp
             @turn = 0
             @result = ""
+            @exp = 0
+            @level_up = false
             
             play
         end

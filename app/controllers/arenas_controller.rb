@@ -1,5 +1,6 @@
 class ArenasController < AdminsController
     include GameProcess
+    include ArenasHelper
     before_action :set_default_instances_variables, only: [:index]
 
     def index
@@ -11,12 +12,11 @@ class ArenasController < AdminsController
             @battle = @battles.last
         end
         get_player_data
-        if @battle
-            @battle_state = check_battle_state(@battle)
-            if @battle_state == 'start'
-                res = Game.set_session(@battle)
-                @battle_state = 'result' if @battle.update_attributes(winner_id: res.result['winner_id'], historic: res.result['historic'])
-            end
+        @battle_state = check_battle_state(@battle)
+        if @battle_state == 'start'
+            res = Game.set_session(@battle)
+            @battle_state = 'result' if @battle.update_attributes(winner_id: res.result['winner_id'], historic: res.result['historic'])
+            ArenasHelper.set_end_game_stats(res.result, @battle)
         end
     end
 
@@ -43,4 +43,5 @@ class ArenasController < AdminsController
         @player1 = Character.find(@battle.player_one_id)
         @player2 = Character.find(@battle.player_two_id)
     end
+
 end
