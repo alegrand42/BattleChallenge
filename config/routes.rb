@@ -3,4 +3,5 @@ Rails.application.routes.draw do
     resources :arenas, only: [:index]
     resources :characters
     resources :battles
+    resources :weapons
 end

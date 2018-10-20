@@ -1,0 +1,35 @@
+
+<div class="row p-15">
+  <%= search_form %>
+  <%= link_to  new_weapon_path, class: 'btn  btn-success pull-right' do %>
+    New <i class="fa fa-plus"></i>
+  <%- end %>
+</div>
+
+<div class="box box-info">
+  <div class="box">
+    <%= render 'layouts/admin/table_header' %>
+    <%= collection_table_for @weapons, [:id, :name, :actions] do |row, weapon| %>
+      <%- row.column(:id) { (weapon.id.to_s) } %>
+      <%- row.column(:name) { (weapon.name) } %>
+      <%- row.column(:actions) do %>
+        <div class="btn-group btn-group-sm">
+          <%= link_to weapon_path(weapon), class: 'btn btn-sm btn-icon btn-default' do %>
+            <i class="fa fa-eye"></i>
+          <%- end %>
+        </div>
+        <div class="btn-group btn-group-sm">
+          <%= link_to  edit_weapon_path(weapon), class: 'btn btn-sm btn-icon btn-default  btn-default' do %>
+            <i class="fa fa-pencil"></i>
+          <%- end %>
+        </div>
+
+        <div class="btn-group btn-group-sm">
+          <%= link_to  weapon_path(weapon), method: :delete, class: 'btn btn-sm btn-icon btn-danger tooltips', 'data-confirm' => 'Sure ?', 'data-placement' => 'bottom' do %>
+            <i class='fa fa-trash-o'></i>
+          <%- end %>
+        </div>
+      <%- end %>
+    <% end %>
+  </div>
+</div>
