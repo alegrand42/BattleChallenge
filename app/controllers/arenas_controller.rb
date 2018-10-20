@@ -40,7 +40,6 @@ class ArenasController < AdminsController
     end
 
     def get_player_data
-        @winner = Character.find(@battle.winner_id) if @battle.winner_id
         @player1 = Character.find(@battle.player_one_id)
         @player2 = Character.find(@battle.player_two_id)
     end

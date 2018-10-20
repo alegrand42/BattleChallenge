@@ -38,8 +38,17 @@ module GameProcess
         private
 
         def attack(attacker, hp, defender)
-            amount = 0 
-            amount = attacker.attack if roll_dice(defender.armor) > 0
+            amount = 0
+            shield = 0
+            shield += defender.armor if defender.armor
+            attacker.weapons.each do |w|
+                amount += w.power if w.shield === false
+            end
+            defender.weapons.each do |w|
+                shield += w.power if w.shield === true
+            end
+            amount += attacker.attack
+            amount -= shield
             @result += add_comment(attacker, defender, amount)
             @turn += 1
             receive_damage(hp, amount)

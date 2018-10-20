@@ -1,4 +1,4 @@
 <h2> Result </h2>
-Winner: <%= @winner.name %>
+Winner: <%= Character.find(@battle.winner_id).name %>
 <br>
 <%= @battle.historic %>
