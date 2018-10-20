@@ -3,13 +3,13 @@
     <div class="row">
         <div class="col-sm-3">
             Player 1
-            <%= Character.find(@battle.player_one_id).name %>
+            <%= @player1.name %>
         </div>
         <div class="col-sm-6">Battle
             Loading fight sequences...
         </div>
         <div class="col-sm-3">Player 2
-            <%= Character.find(@battle.player_two_id).name %>
+            <%= @player2.name %>
         </div>
     </div>
 </div>

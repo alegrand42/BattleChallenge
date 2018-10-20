@@ -10,6 +10,7 @@ class ArenasController < AdminsController
         else
             @battle = @battles.last
         end
+        get_player_data
         if @battle
             @battle_state = check_battle_state(@battle)
             if @battle_state == 'start'
@@ -38,4 +39,9 @@ class ArenasController < AdminsController
         end
     end
 
+    def get_player_data
+        @winner = Character.find(@battle.winner_id) if @battle.winner_id
+        @player1 = Character.find(@battle.player_one_id)
+        @player2 = Character.find(@battle.player_two_id)
+    end
 end
