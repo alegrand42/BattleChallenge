@@ -9,6 +9,13 @@ jobs:
       # specify the version you desire here
        - image: circleci/ruby:2.4.1-node-browsers
        - image: circleci/postgres:9.4
+        environment:
+          POSTGRES_USER: battlechallenge
+          POSTGRES_DB: battlechallenge_test
+          POSTGRES_PASSWORD: ""
+          DB_NAME: battlechallenge_test
+          DB_POSTGRES_USERNAME: battlechallenge
+          DB_POSTGRES_PASSWORD: ""
       
     working_directory: ~/BattleChallenge
 
