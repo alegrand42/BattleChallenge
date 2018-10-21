@@ -1,5 +1,7 @@
 # README
 
+[![CircleCI Build Status](https://circleci.com/gh/circleci/circleci-images.svg?style=shield)](https://circleci.com/gh/alegrand42/BattleChallenge)
+
 Welcome to the Battle Challenge app.
 This rails app enables you to create fighters in order to make them fight in an arena.
 
