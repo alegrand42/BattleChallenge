@@ -1,0 +1,20 @@
+<div class="box box-info">
+  <div class='disable_input'>
+  <%= render 'layouts/admin/table_header' %>
+
+  <%= form_for @weapon, url: weapon_path(@weapon) do |f| %>
+
+   <div class="box-body">
+    <div class="form-group col-xs-12">
+    <%= f.label :id, class:"col-sm-2 control-label" %>
+      <div class="col-sm-10">
+        <%= @weapon.id %>
+      </div>
+    </div>
+   </div>
+  
+    <%= render 'fields', f: f, weapon: @weapon, fields_disabled: true, type_hidden: "hidden" %>
+
+  <% end %>
+ </div>
+</div>

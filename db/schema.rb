@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181019131355) do
+ActiveRecord::Schema.define(version: 20181020193847) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,6 +31,32 @@ ActiveRecord::Schema.define(version: 20181019131355) do
     t.integer "attack"
     t.integer "armor"
     t.text "background"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "level", default: 1
+    t.integer "exp", default: 0
+    t.integer "win_count", default: 0
+    t.integer "lose_count", default: 0
+    t.string "avatar_file_name"
+    t.string "avatar_content_type"
+    t.integer "avatar_file_size"
+    t.datetime "avatar_updated_at"
+  end
+
+  create_table "inventories", force: :cascade do |t|
+    t.bigint "character_id"
+    t.bigint "weapon_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["character_id"], name: "index_inventories_on_character_id"
+    t.index ["weapon_id"], name: "index_inventories_on_weapon_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.text "detail"
+    t.integer "power"
+    t.boolean "shield", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

@@ -3,12 +3,14 @@
     <div class="row">
         <div class="col-sm-3">
             Player 1
+            <%= image_tag @player1.avatar.url(:thumb) %>
             <%= @player1.name %>
         </div>
         <div class="col-sm-6">Battle
             Loading fight sequences...
         </div>
         <div class="col-sm-3">Player 2
+            <%= image_tag @player2.avatar.url(:thumb) %>
             <%= @player2.name %>
         </div>
     </div>
