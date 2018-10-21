@@ -54,14 +54,7 @@ jobs:
           name: Parallel RSpec
           command: |
             mkdir /tmp/test-results
-            TEST_FILES="$(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)"
-
-            bundle exec rspec spec --format progress \
-                        --format RspecJunitFormatter \
-                        --out /tmp/test-results/rspec.xml \
-                        --format progress \
-                        -- \
-                        $TEST_FILES
+            bin/bundle exec rspec spec
 
       # Save artifacts
       - store_test_results:
