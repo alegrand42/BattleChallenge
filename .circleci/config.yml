@@ -2,26 +2,26 @@ version: 2
 jobs:
   build:
     working_directory: ~/BattleChallenge
-    
+
     # Primary container image where all commands run
-    
+
     docker:
       - image: circleci/ruby:2.4.1-node
         environment:
           RAILS_ENV: test
           PGHOST: 127.0.0.1
           PGUSER: root
-    
+
     # Service container image available at `host: localhost`
-    
+
       - image: circleci/postgres:9.6.2-alpine
         environment:
           POSTGRES_USER: root
           POSTGRES_DB: battlechallenge_test
-	  DB_NAME: battlechallenge_test
-	  DB_POSTGRES_USERNAME: root
-	  DB_POSTGRES_PASSWORD: ""
-        
+          DB_NAME: battlechallenge_test
+          DB_POSTGRES_USERNAME: root
+          DB_POSTGRES_PASSWORD: ""
+
     steps:
       - checkout
 
