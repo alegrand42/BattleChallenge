@@ -54,6 +54,7 @@ jobs:
           name: Parallel RSpec
           command: |
             mkdir /tmp/test-results
+            bin/rails db:migrate RAILS_ENV=test
             bin/bundle exec rspec spec
 
       # Save artifacts
