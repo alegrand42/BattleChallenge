@@ -16,6 +16,7 @@ class ArenasController < AdminsController
         if @battle_state == 'start'
             res = Game.set_session(@battle)
             @battle_state = 'result' if @battle.update_attributes(winner_id: res.result['winner_id'], historic: res.result['historic'])
+            @winner = Character.find(@battle.winner_id)
             ArenasHelper.set_end_game_stats(res.result, @battle)
         end
     end
@@ -40,6 +41,7 @@ class ArenasController < AdminsController
     end
 
     def get_player_data
+        @winner = Character.find(@battle.winner_id) if @battle.winner_id
         @player1 = Character.find(@battle.player_one_id)
         @player2 = Character.find(@battle.player_two_id)
     end

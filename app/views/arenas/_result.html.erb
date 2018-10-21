@@ -1,4 +1,26 @@
-<h2> Result </h2>
-Winner: <%= Character.find(@battle.winner_id).name %>
-<br>
-<%= @battle.historic %>
+<div>
+    <h2> Battle </h2>
+    <div class="row">
+        <div class="col-sm-3">
+            Player 1
+            <br>
+            <%= image_tag @player1.avatar.url(:thumb) %>
+            <br>
+            <%= @player1.name %>
+        </div>
+        <div class="col-sm-6">Result
+            <br>
+            <%= image_tag @winner.avatar.url(:thumb) %>
+            <br>
+            Winner: <%= @winner.name %>
+            <br>
+        <%= @battle.historic %>
+        </div>
+        <div class="col-sm-3">Player 2
+            <br>
+            <%= image_tag @player2.avatar.url(:thumb) %>
+            <br>
+            <%= @player2.name %>
+        </div>
+    </div>
+</div>

@@ -11,6 +11,7 @@ class CharactersController < AdminsController
                                           :weapon_ids,
                                           :level,
                                           :exp,
+                                          :avatar,
                                           :win_count,
                                           :lose_count,
                                           :background)

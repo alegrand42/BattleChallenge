@@ -43,6 +43,9 @@ gem 'jquery-ui-rails'
 # Forms
 gem "select2-rails"
 
+# Picture
+gem "paperclip", "~> 6.0.0"
+
 # Bootstrap
 gem "therubyracer"
 gem "twitter-bootstrap-rails"
