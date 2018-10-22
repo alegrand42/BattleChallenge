@@ -11,13 +11,15 @@ class ArenasController < AdminsController
         else
             @battle = @battles.last
         end
-        get_player_data
-        @battle_state = check_battle_state(@battle)
-        if @battle_state == 'start'
-            res = Game.set_session(@battle)
-            @battle_state = 'result' if @battle.update_attributes(winner_id: res.result['winner_id'], historic: res.result['historic'])
-            @winner = Character.find(@battle.winner_id)
-            ArenasHelper.set_end_game_stats(res.result, @battle)
+        if @battle
+            get_player_data
+            @battle_state = check_battle_state(@battle)
+            if @battle_state == 'start'
+                res = Game.set_session(@battle)
+                @battle_state = 'result' if @battle.update_attributes(winner_id: res.result['winner_id'], historic: res.result['historic'])
+                @winner = Character.find(@battle.winner_id)
+                ArenasHelper.set_end_game_stats(res.result, @battle)
+            end
         end
     end
 
@@ -33,7 +35,7 @@ class ArenasController < AdminsController
     end
 
     def check_battle_state(battle)
-        if battle.winner_id
+        if battle && battle.winner_id
             @battle_state = 'result'
         else
             @battle_state = 'start'
@@ -41,9 +43,11 @@ class ArenasController < AdminsController
     end
 
     def get_player_data
-        @winner = Character.find(@battle.winner_id) if @battle.winner_id
-        @player1 = Character.find(@battle.player_one_id)
-        @player2 = Character.find(@battle.player_two_id)
+        if @battle
+            @winner = Character.find(@battle.winner_id) if @battle.winner_id
+            @player1 = Character.find(@battle.player_one_id)
+            @player2 = Character.find(@battle.player_two_id)
+        end
     end
 
 end
